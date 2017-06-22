@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "js": [ "autocomplete.js" ],
-      "matches": [ "http://*/*", "https://*/*" ],
+      "matches": [ "<all_urls>"],
       "run_at": "document_start"
    } ],
    "description": "Changes 'autocomplete=off' to 'autocomplete=on' in web pages, so your passwords will be remembered.",
@@ -9,6 +9,6 @@
       "32": "icon32.png"
    },
    "name": "Autocomplete on",
-   "version": "1.0",
+   "version": "1.0.1",
     "manifest_version": 2
 }
