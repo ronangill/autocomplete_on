@@ -1,7 +1,7 @@
 function enableAutocomplete() {
   'use strict';
   document.querySelectorAll('[autocomplete]').forEach(function(element){
-    element"autocomplete"] = "on";
+    element["autocomplete"] = "on";
   });
 }
 
