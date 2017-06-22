@@ -1,18 +1,22 @@
-// Code design inspired by http://userscripts.org/scripts/show/7347 .  Not
-// overriding form submit prototypes like that does because I don't know of a
-// good way to do this with Isolated Worlds (see http://groups.google.com/
-// group/chromium-dev/browse_thread/thread/118689ceda861163/ff25578ed3585edd )
-// and I'm not sure the password manager would pick it up anyway (see comment
-// below).
+// pathc for the original project autocomplete_on - author kzahel
+// I've rewrite the code which is supposed to work with every webpage
 
-function enableAutocomplete()
-{
-    var snapshot = document.evaluate('//@autocomplete',
-        document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null),
-        numItems = snapshot.snapshotLength - 1;
-
-    for (var i = numItems; i >= 0; i--)
-        snapshot.snapshotItem(i).nodeValue = 'on';
+function enableAutocomplete() {
+'use strict';
+var ac,c,f,fa,fe,fea,x,y,z;
+ac="autocomplete"; c=0;    f=document.forms;
+for(x=0;x<f.length;x++)    {
+    fa=f[x].attributes;
+    for(y=0;y<fa.length;y++) {
+        if(fa[y].name.toLowerCase()==ac) { fa[y].value="on";c++; } }
+        fe=f[x].elements;
+    for(y=0;y<fe.length;y++) {
+        fea=fe[y].attributes;
+        for(z=0;z<fea.length;z++) {
+            if(fea[z].name.toLowerCase()==ac) { fea[z].value="on";c++; }
+            }
+        }
+    }
 }
 
 // The password manager code checks for "autocomplete=off" in a callback
